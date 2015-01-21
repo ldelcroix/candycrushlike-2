@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="scripts.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>Test Neo Genese Web</title>
+</head>
+
+<body>
+  
+  <div id="score" style="width:100px; height:100px; background-color:#FFF; color:#000; position:absolute; right:100px; top:100px; font-size:50px; text-align:center;">1</div>
+  <div id="grille"></div>
+  <div id="console" style="width:100%; height:100%; background-color:#000; color:#FFF;"></div>
+  
+  <script type="text/javascript">
+	const dimensionGrille = 8;
+	var grille = $("#grille");
+	
+	//var Cases = new Array("bios", "cooler", "ddr_memory", "motherboard", "network_adapter", "pci", "processor");
+	//var Cases = new Array("flag_blue", "flag_green", "flag_orange", "flag_pink", "flag_purple", "flag_red", "flag_finish");
+	//var Cases = new Array("bullet_black", "bullet_blue", "bullet_green", "bullet_orange", "bullet_pink", "bullet_purple", "bullet_red", "bullet_white", "bullet_yellow");
+	var Cases = new Array("bullet_blue", "bullet_green", "bullet_orange", "bullet_red", "bullet_yellow");
+	
+	CreateGrille(grille, dimensionGrille, Cases);
+	
+	grille.children("span").click(
+    function(){
+			var indexElement = $(this).index(), element = $(this);
+			
+			//alert(" e : "+indexElement+"\n c : "+$(this).prev().index()+"\n % : "+$(this).prev().index() % dimensionGrille);
+			
+			if($(this).is(".selected"))
+			{
+				$(this).removeClass("selected");
+				printf(CasePrint($(this))+" deselectionne");
+			}
+			else if(  ($(this).prev().is(".selected") && $(this).prev().index() % dimensionGrille != dimensionGrille -1) 
+			      ||  ($(this).next().is(".selected") && $(this).next().index() % dimensionGrille != 0)
+						||  (grille.children("span:eq("+(indexElement-dimensionGrille)+")").is(".selected"))
+						||  (grille.children("span:eq("+(indexElement+dimensionGrille)+")").is(".selected")))
+			{
+				var temp = grille.children("span.selected");
+				temp.removeClass("selected");
+				
+				var dif = indexElement - temp.index();
+				
+				switch(dif)
+				{				
+					case (-1) :
+						if(
+							(TestSiAlignementPossible(grille, dimensionGrille, temp, 'left'))
+						||(TestSiAlignementPossible(grille, dimensionGrille, element, 'right'))
+						)
+						{
+							grille.queue(function () {
+								IntervertirDeuxCases(element, temp, true);
+								EffaceAlignement(grille, dimensionGrille, temp);
+								EffaceAlignement(grille, dimensionGrille, element);
+								CompleteGrille(grille, dimensionGrille, Cases);
+								$(this).dequeue();
+							});
+						}
+						else
+						{
+							Clignotement(element);
+							Clignotement(temp);
+						}
+						break;
+						
+					case (1) :
+						if(
+							(TestSiAlignementPossible(grille, dimensionGrille, temp, 'right'))
+						||(TestSiAlignementPossible(grille, dimensionGrille, element, 'left'))
+						)
+						{
+							grille.queue(function () {
+								IntervertirDeuxCases(element, temp, true);
+								EffaceAlignement(grille, dimensionGrille, temp);
+								EffaceAlignement(grille, dimensionGrille, element);
+								CompleteGrille(grille, dimensionGrille, Cases);
+								$(this).dequeue();
+							});
+						}
+						else
+						{
+							Clignotement(element);
+							Clignotement(temp);
+						}
+						break;
+						
+					case (-dimensionGrille) :
+						if(
+							(TestSiAlignementPossible(grille, dimensionGrille, temp, 'up'))
+						||(TestSiAlignementPossible(grille, dimensionGrille, element, 'down'))
+						)
+						{
+							grille.queue(function () {
+								IntervertirDeuxCases(element, temp, true);
+								EffaceAlignement(grille, dimensionGrille, temp);
+								EffaceAlignement(grille, dimensionGrille, element);
+								CompleteGrille(grille, dimensionGrille, Cases);
+								$(this).dequeue();
+							});
+						}
+						else
+						{
+							Clignotement(element);
+							Clignotement(temp);
+						}
+						break;
+						
+					case (dimensionGrille) :
+						if(
+							(TestSiAlignementPossible(grille, dimensionGrille, temp, 'down'))
+						||(TestSiAlignementPossible(grille, dimensionGrille, element, 'up'))
+						)
+						{
+							grille.queue(function () {
+								IntervertirDeuxCases(element, temp, true);
+								EffaceAlignement(grille, dimensionGrille, temp);
+								EffaceAlignement(grille, dimensionGrille, element);
+								CompleteGrille(grille, dimensionGrille, Cases);
+								$(this).dequeue();
+							});
+						}
+						else
+						{
+							Clignotement(element);
+							Clignotement(temp);
+						}
+						break;
+				}
+			}
+			else
+			{				
+				grille.children("span").removeClass("selected");
+				printf(CasePrint($(this))+" selectionne");
+				$(this).addClass("selected");				
+			}
+    }
+  );
+	</script>
+
+</body>
+</html>

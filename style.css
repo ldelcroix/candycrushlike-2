@@ -1,0 +1,151 @@
+@charset "utf-8";
+/* CSS Document */
+
+#grille {	
+	display:block;
+	padding:0;
+	margin:0;
+	background-color:#CCC;
+	border:3px solid #999;
+	position:fixed;
+	top:100px;
+	left:50%;
+}
+	
+	#grille span {
+		width:32px;
+		height:32px;
+		padding:0;
+		margin:0;
+		display:block;
+		background:url("./graphics/interface/case.png") no-repeat top left;
+		position:absolute;
+	}
+			
+		#grille span.selected {		
+			background-color:blue;
+		}
+		
+		#grille span.green {
+			background-color:green;
+		}
+		
+		#grille span.red {
+			background-color:red;
+		}	
+		
+		#grille span[type="maxi"] {
+			background:url("./graphics/interface/case_maxi.png") no-repeat top left;
+		}
+		
+		#grille span[type="hyper"] {
+			background:url("./graphics/interface/case_hyper.png") no-repeat top left;
+		}	
+		
+		#grille span canvas {
+			width:32px;
+			height:32px;
+			padding:0;
+			margin:0;
+			display:inline-block;
+			position:absolute;
+			top:0;
+			left:0;
+		}
+			
+			#grille span.bios canvas {		
+				background:url("./graphics/interface/icons/32x32/bios.png") no-repeat center center;
+			}
+			
+			#grille span.cooler canvas {		
+				background:url("./graphics/interface/icons/32x32/cooler.png") no-repeat center center;
+			}
+			
+			#grille span.ddr_memory canvas {		
+				background:url("./graphics/interface/icons/32x32/ddr_memory.png") no-repeat center center;
+			}
+			
+			#grille span.motherboard canvas {		
+				background:url("./graphics/interface/icons/32x32/motherboard.png") no-repeat center center;
+			}
+			
+			#grille span.network_adapter canvas {		
+				background:url("./graphics/interface/icons/32x32/network_adapter.png") no-repeat center center;
+			}
+			
+			#grille span.pci canvas {		
+				background:url("./graphics/interface/icons/32x32/pci.png") no-repeat center center;
+			}
+			
+			#grille span.processor canvas {		
+				background:url("./graphics/interface/icons/32x32/processor.png") no-repeat center center;
+			}
+			
+			
+		
+			#grille span.flag_blue canvas {		
+				background:url("./graphics/interface/icons/32x32/flag_blue.png") no-repeat center center;
+			}
+			
+			#grille span.flag_green canvas {		
+				background:url("./graphics/interface/icons/32x32/flag_green.png") no-repeat center center;
+			}
+			
+			#grille span.flag_orange canvas {		
+				background:url("./graphics/interface/icons/32x32/flag_orange.png") no-repeat center center;
+			}
+			
+			#grille span.flag_pink canvas {		
+				background:url("./graphics/interface/icons/32x32/flag_pink.png") no-repeat center center;
+			}
+			
+			#grille span.flag_purple canvas {		
+				background:url("./graphics/interface/icons/32x32/flag_purple.png") no-repeat center center;
+			}
+			
+			#grille span.flag_red canvas {		
+				background:url("./graphics/interface/icons/32x32/flag_red.png") no-repeat center center;
+			}
+			
+			#grille span.flag_finish canvas {		
+				background:url("./graphics/interface/icons/32x32/flag_finish.png") no-repeat center center;
+			}
+		
+		
+		
+			#grille span.bullet_black canvas {		
+				background:url("./graphics/interface/icons/32x32/bullet_black.png") no-repeat center center;
+			}
+			
+			#grille span.bullet_blue canvas {		
+				background:url("./graphics/interface/icons/32x32/bullet_blue.png") no-repeat center center;
+			}
+			
+			#grille span.bullet_green canvas {		
+				background:url("./graphics/interface/icons/32x32/bullet_green.png") no-repeat center center;
+			}
+			
+			#grille span.bullet_orange canvas {		
+				background:url("./graphics/interface/icons/32x32/bullet_orange.png") no-repeat center center;
+			}
+			
+			#grille span.bullet_pink canvas {		
+				background:url("./graphics/interface/icons/32x32/bullet_pink.png") no-repeat center center;
+			}
+			
+			#grille span.bullet_purple canvas {		
+				background:url("./graphics/interface/icons/32x32/bullet_purple.png") no-repeat center center;
+			}
+			
+			#grille span.bullet_red canvas {		
+				background:url("./graphics/interface/icons/32x32/bullet_red.png") no-repeat center center;
+			}
+			
+			#grille span.bullet_white canvas {		
+				background:url("./graphics/interface/icons/32x32/bullet_white.png") no-repeat center center;
+			}
+			
+			#grille span.bullet_yellow canvas {		
+				background:url("./graphics/interface/icons/32x32/bullet_yellow.png") no-repeat center center;
+			}
+	
